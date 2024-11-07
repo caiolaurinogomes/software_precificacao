@@ -6,7 +6,7 @@ import io
 from flask_login import current_user
 from preprocessing import process_data
 from pricing_logic import calculate_prices
-from generate_table import generate_pricing_table  # Importando a função para gerar a tabela
+from generate_table import generate_pricing_table
 from database import get_db
 from models import Input as UserInput
 

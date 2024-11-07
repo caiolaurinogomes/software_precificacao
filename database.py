@@ -2,10 +2,10 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-# Configuração do banco de dados SQLite
-DATABASE_URL = "sqlite:///precificacao.db"
+# Configuração do banco de dados Azure SQL
+DATABASE_URL = "mssql+pyodbc://caio.laurino@push3.com.br:Spfc1717!@softwareprecificacao.database.windows.net/precificacao_db?driver=ODBC+Driver+17+for+SQL+Server"
 
-engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Base para definir as tabelas
@@ -18,3 +18,4 @@ def get_db():
         yield db
     finally:
         db.close()
+

@@ -25,3 +25,4 @@ class Input(Base):
 
     # Relacionamento com usuário
     usuario = relationship("Usuario", back_populates="inputs")
+

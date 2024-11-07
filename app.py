@@ -11,9 +11,12 @@ from models import Input as UserInput
 
 # Configuração do aplicativo Flask
 app = Flask(__name__)
-app.secret_key = 'supersecretkey'
+app.secret_key = os.getenv('SECRET_KEY', 'supersecretkey')  # Pega a secret key de uma variável de ambiente
+
+# Define a pasta de upload
 app.config['UPLOAD_FOLDER'] = 'uploads'
 
+# Cria as tabelas no banco de dados
 Base.metadata.create_all(bind=engine)  # Cria as tabelas na primeira execução
 
 # Inicializa o login manager com o app
@@ -44,4 +47,6 @@ def protected_dashboard():
     return redirect('/dashboard')  # Redireciona para o Dash diretamente
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5001)
+    # No Azure, não especificamos host e port explicitamente
+    app.run()
+

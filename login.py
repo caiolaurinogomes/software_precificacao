@@ -41,6 +41,7 @@ def add_login_routes(app):
             if db.query(Usuario).filter(Usuario.username == username).first():
                 flash("Nome de usuário já existe.", "danger")
                 return redirect(url_for('register'))
+            # Armazena o hash da senha para segurança
             db.add(Usuario(username=username, password_hash=generate_password_hash(password)))
             db.commit()
             flash("Usuário registrado com sucesso!", "success")
@@ -53,4 +54,3 @@ def add_login_routes(app):
         logout_user()
         flash("Você foi desconectado.", "info")
         return redirect(url_for('login'))
-

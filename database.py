@@ -10,7 +10,12 @@ server = "softwareprecificacao.database.windows.net"  # Nome do servidor
 database = "precificacao_db"  # Nome do banco de dados
 
 # String de conexão para autenticação do Azure Active Directory
-DATABASE_URL = f"mssql+pyodbc://{username}:{password}@{server}/{database}?driver=ODBC+Driver+17+for+SQL+Server&Authentication=ActiveDirectoryPassword"
+DATABASE_URL = (
+    f"mssql+pyodbc://{username}:{password}@{server}:1433/"
+    f"{database}?driver=ODBC+Driver+18+for+SQL+Server&"
+    "Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
+    "Authentication=ActiveDirectoryPassword"
+)
 
 # Criação do engine do SQLAlchemy
 engine = create_engine(DATABASE_URL)
@@ -26,3 +31,4 @@ def get_db():
         yield db
     finally:
         db.close()
+

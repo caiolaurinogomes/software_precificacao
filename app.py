@@ -17,7 +17,10 @@ app.secret_key = os.getenv('SECRET_KEY', 'supersecretkey')  # Pega a secret key 
 app.config['UPLOAD_FOLDER'] = 'uploads'
 
 # Cria as tabelas no banco de dados
-Base.metadata.create_all(bind=engine)  # Cria as tabelas na primeira execução
+try:
+    Base.metadata.create_all(bind=engine)  # Cria as tabelas na primeira execução
+except Exception as e:
+    print(f"Erro ao conectar ao banco de dados: {e}")
 
 # Inicializa o login manager com o app
 login_manager.init_app(app)
@@ -45,6 +48,11 @@ def index():
 def protected_dashboard():
     # Redireciona para o Dash
     return redirect('/dashboard')  # Redireciona para o Dash diretamente
+
+if __name__ == "__main__":
+    # No Azure, não especificamos host e port explicitamente
+    app.run()
+
 
 if __name__ == "__main__":
     # No Azure, não especificamos host e port explicitamente

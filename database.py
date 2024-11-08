@@ -10,8 +10,12 @@ password = getpass("Digite sua senha para conectar ao banco de dados: ")
 # Configuração do banco de dados Azure SQL
 DATABASE_URL = f"mssql+pyodbc://caio.laurino:{password}@softwareprecificacao.database.windows.net/precificacao_db?driver=ODBC+Driver+17+for+SQL+Server"
 
-# Cria o engine do SQLAlchemy
-engine = create_engine(DATABASE_URL)
+try:
+    # Cria o engine do SQLAlchemy
+    engine = create_engine(DATABASE_URL)
+except Exception as e:
+    print(f"Erro ao criar o engine do banco de dados: {e}")
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Base para definir as tabelas

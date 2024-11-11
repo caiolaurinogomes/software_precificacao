@@ -5,7 +5,6 @@ from sqlalchemy.orm import sessionmaker
 
 # Configurações do banco de dados Azure SQL
 username = "caio.laurino@push3.com.br"  # Seu e-mail
-password = "Spfc1717!"  # Sua senha
 server = "softwareprecificacao.database.windows.net"  # Nome do servidor
 database = "precificacao_db"  # Nome do banco de dados
 

@@ -56,10 +56,3 @@ def submit_input():
 if __name__ == "__main__":
     # No Azure, não especificamos host e port explicitamente
     app.run(debug=True)  # Para testes locais, você pode manter o debug True
-
-
-
-if __name__ == "__main__":
-    # No Azure, não especificamos host e port explicitamente
-    app.run()
-

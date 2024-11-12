@@ -1,7 +1,6 @@
 Flask==3.0.3
 SQLAlchemy==1.4.0
 pyodbc==4.0.32
-
-
-
-
+Flask-SQLAlchemy  # Opcional, se precisar de integração com SQLAlchemy
+cryptography      # Para evitar avisos de segurança com pyodbc
+gunicorn          # Para execução em ambiente de produção

@@ -8,5 +8,5 @@ DATABASE_NAME = "db_precificacao"  # Nome do banco de dados
 
 # String de conexão para autenticação SQL
 SQLALCHEMY_DATABASE_URL = (
-    f"mssql+pyodbc://{DATABASE_USERNAME}:{DATABASE_PASSWORD}@{DATABASE_SERVER}:1433/{DATABASE_NAME}?driver=ODBC+Driver+18+for+SQL+Server&Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
+    f"mssql+pyodbc://{DATABASE_USERNAME}:{DATABASE_PASSWORD}@{DATABASE_SERVER},1433;Database={DATABASE_NAME};Uid={DATABASE_USERNAME};Pwd={DATABASE_PASSWORD};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
 )

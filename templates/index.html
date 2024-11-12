@@ -7,7 +7,8 @@
 </head>
 <body>
     <h1>Teste de Conexão com Banco de Dados</h1>
-    <form method="POST">
+    <!-- Especificando a rota '/submit' no action do formulário -->
+    <form action="/submit" method="POST">
         <label for="user_input">Digite algo:</label>
         <input type="text" id="user_input" name="user_input" required>
         <button type="submit">Salvar</button>
